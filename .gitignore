@@ -1,0 +1,30 @@
+# IntelliJ / WebStorm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Java / Maven
+**/target/
+**/*.class
+
+# Node / Angular
+**/node_modules/
+**/dist/
+**/.angular/
+**/.cache/
+**/coverage/
+
+# Env files
+.env
+.env.*
