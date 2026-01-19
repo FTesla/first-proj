@@ -1,19 +1,21 @@
 # First Demo: Spring Boot + Angular + Docker
 
-Тестовый проект: backend на Spring Boot и frontend на Angular (canvas/симуляция), деплой через Docker.
+Учебный проект: backend на Spring Boot (Java 21) и frontend на Angular (canvas/симуляция).
+Деплой: сборка образов локально → перенос на VPS → запуск через Docker Compose.
 
 ## Стек
 - Java 21, Spring Boot
 - Angular
 - Docker / Docker Compose
-- nginx (раздача фронта + прокси /api)
+- nginx (статика + прокси `/api`)
 
-## Локальный запуск
-### Frontend
+## Локальный запуск (через Docker)
 ```bash
-cd frontend
-npm ci
-npm run build
+docker compose up -d
+```
 
-## Открыть:
-http://localhost/
+Frontend:
+http://localhost:4200/
+
+API:
+http://localhost:4200/api/hello
