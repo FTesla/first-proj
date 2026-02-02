@@ -1,12 +1,28 @@
 services:
   backend:
     image: first-proj-backend
-    ports:
+    container_name: firstdemo-backend
+    restart: unless-stopped
+    expose:
       - "8080"
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+    networks:
+      - firstdemo
 
   frontend:
     image: first-proj-frontend
-    ports:
-      - "80:80"
+    container_name: firstdemo-frontend
+    restart: unless-stopped
     depends_on:
       - backend
+    ports:
+       - "127.0.0.1:8080:80"
+    volumes:
+      - /opt/firstdemo/frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - firstdemo
+
+networks:
+  firstdemo:
+    driver: bridge
