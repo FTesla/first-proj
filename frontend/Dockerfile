@@ -1,4 +1,15 @@
+# ===== build stage =====
+FROM node:20-alpine AS build
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build
+
+# ===== runtime stage =====
 FROM nginx:alpine
-COPY dist/firstdemo-ui/browser /usr/share/nginx/html
+COPY --from=build /app/dist/firstdemo-ui/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80

@@ -5,9 +5,11 @@ import org.example.firstdemo.service.HelloService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 @Scope("request")
 @CrossOrigin(origins = "http://localhost:4200")
 public class HelloController {
@@ -23,3 +25,4 @@ public class HelloController {
         return helloService.getHello();
     }
 }
+
